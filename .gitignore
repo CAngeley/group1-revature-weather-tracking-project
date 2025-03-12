@@ -1,7 +1,7 @@
 # Ignore environment and secret files
 weather-backend/.env
 weather-backend/serviceAccountKey.json
-weather-frontend/weather-app/sec/firebaseConfig.jsx
+weather-frontend/weather-app/src/firebaseConfig.jsx
 
 # Ignore node_modules and dependencies
 node_modules/
