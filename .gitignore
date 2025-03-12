@@ -1,0 +1,21 @@
+# Ignore environment and secret files
+weather-backend/.env
+weather-backend/serviceAccountKey.json
+weather-frontend/weather-app/sec/firebaseConfig.jsx
+
+# Ignore node_modules and dependencies
+node_modules/
+dist/
+build/
+
+# Ignore logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Ignore IDE and OS-specific files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
