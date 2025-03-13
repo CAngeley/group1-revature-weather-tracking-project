@@ -7,6 +7,10 @@ weather-backend/serviceAccountKey.json
 weather-frontend/weather-app/src/firebaseConfig.jsx
 weather-frontend/src/firebaseConfig.jsx
 
+weather-backend/*
+!weather-backend/**/*.py
+!weather-backend/*.py
+
 # Ignore prometheus and alertmanager directories except specific files
 prometheus/*
 !prometheus/*.yml
