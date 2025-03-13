@@ -6,6 +6,12 @@ import search_icon from '../assets/search_icon.png';
 import { AppBar, Toolbar, Typography, Button, Container, Grid, Card, CardContent, TextField } from '@mui/material';
 
 function Home() {
+
+        useEffect(() => {
+            document.title = "Nimbus - Weather";
+          }
+        );
+
     const { currentUser } = useAuth();
     const [city, setCity] = useState('');
     const [weatherData, setWeatherData] = useState(null);
@@ -25,10 +31,14 @@ function Home() {
         else if (temp > 15 && temp <= 30) recommendation = "😎 Enjoy the weather!";
         else if (temp > 30) recommendation = "🥵 Stay hydrated, it's hot!";
         if (wind > 10) recommendation += " 💨 Strong winds! Secure loose items.";
-        if (description.includes("rain")) recommendation += " ☔ Don't forget your umbrella!";
-        if (description.includes("snow")) recommendation += " ❄️ Drive safely, it's snowy!";
+        if (description.includes("rain")) recommendation += "\n☔ Don't forget your umbrella!";
+        if (description.includes("snow")) recommendation += "\n❄️ Drive safely, it's snowy!";
 
         return recommendation;
+    };
+
+    const splitRecommendation = (recommendation) => {
+        return recommendation.split("\n").map((line, index) => <p key={index}>{line}</p>);
     };
 
     const fetchWeather = async () => {
@@ -82,8 +92,12 @@ function Home() {
 
                 {weatherData && (
                     <div className="weather-card">
+                        
                         <p className='city-temperature'>{Math.round(weatherData.main.temp)}°C</p>
                         <h2 className='city-name'>{weatherData.name}</h2>
+                        <div className="recommendation">
+                        {splitRecommendation(getRecommendations(weatherData))}
+                        </div>
                         <p className='city-info'>🥶 Feels Like: {weatherData.main.feels_like}°C</p>
                         <p className='city-info'>💧 Humidity: {weatherData.main.humidity}%</p>
                         <p className='city-info'>☁️ Conditions: {weatherData.weather[0].description}</p>
@@ -92,7 +106,7 @@ function Home() {
                         <p className='city-info'>👁️ Visibility: {weatherData.visibility / 1000} km</p>
                         <p className='city-info'>🌅 Sunrise: {new Date(weatherData.sys.sunrise * 1000).toLocaleTimeString()}</p>
                         <p className='city-info'>🌇 Sunset: {new Date(weatherData.sys.sunset * 1000).toLocaleTimeString()}</p>
-                        <p className="recommendation">{getRecommendations(weatherData)}</p>
+                        
                     </div>
                 )}
             </div>

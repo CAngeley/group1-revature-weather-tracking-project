@@ -1,10 +1,17 @@
 import React, { useState } from "react";
+import { useEffect } from 'react';
 import { auth } from "../firebaseConfig";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../components/NavBar/NavBar";
 
 function Signup() {
+
+    useEffect(() => {
+        document.title = "Nimbus - Sign Up";
+        }
+    );
+
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");

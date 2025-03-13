@@ -1,7 +1,14 @@
 import React from "react";
+import { useEffect } from 'react';
 import Navbar from "../components/NavBar/NavBar";
 
 const LandingPage = () => {
+
+    useEffect(() => {
+        document.title = "Nimbus - Homepage";
+      }
+    );
+
     return (
         <>
             <body className="landingpage">
