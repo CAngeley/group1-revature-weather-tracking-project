@@ -16,7 +16,7 @@ weather_wind_speed = Gauge("weather_wind_speed", "Wind speed in m/s", ["city"], 
 weather_pressure = Gauge("weather_pressure", "Atmospheric pressure in hPa", ["city"], registry=registry)
 
 # OpenWeather API Config
-API_KEY = "8928040ad74083e2c6a73017101a89b3"
+API_KEY = "d12dbe68b0fdf18279683b9677eab816"
 BASE_URL = "http://api.openweathermap.org/data/2.5/weather"
 
 # Store latest weather metrics

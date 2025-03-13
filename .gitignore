@@ -8,9 +8,9 @@ weather-frontend/weather-app/src/firebaseConfig.jsx
 
 # Ignore prometheus and alertmanager directories except specific files
 prometheus/*
-!prometheus/prometheus.yml
+!prometheus/*.yml
 alertmanager/*
-!alertmanager/alertmanager.yml
+!alertmanager/*.yml
 
 # Ignore node_modules and dependencies
 node_modules/
