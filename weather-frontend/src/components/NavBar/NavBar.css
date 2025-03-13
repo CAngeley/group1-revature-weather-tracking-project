@@ -1,0 +1,75 @@
+*{
+    text-decoration: none;
+}
+
+.navbar{
+    background: rgba(0, 0, 0, 0.2);
+    padding: 25px 100px;
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+    right: 0;
+    z-index: 1000; 
+    width: 100%; 
+    
+}
+
+.navdiv{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo a{
+    font-size: 35px;
+    font-weight: 600;
+    color: white;
+}
+
+.login{
+    background-color: rgb(34, 159, 243);
+    border-color: rgb(34, 159, 243);
+    margin-left: 10px;
+    border-radius: 10px;
+    padding: 10px;
+    width: 90px;
+    color: black;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.login:hover{
+    cursor: pointer;
+    background-color: rgb(126, 201, 250);
+    border-color: rgb(126, 201, 250)
+}
+
+.login a{
+    color: white;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.signup{
+    background-color: whitesmoke;
+    border-color: whitesmoke;
+    margin-left: 10px;
+    border-radius: 10px;
+    padding: 10px;
+    width: 90px;
+    color: black;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.signup:hover{
+    cursor: pointer;
+    background-color:lightgrey;
+    border-color: lightgrey;
+}
+
+.signup a{
+    color: white;
+    font-weight: bold;
+    font-size: 15px;
+}

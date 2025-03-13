@@ -36,16 +36,22 @@ def verify_token(authorization: str = Header(None)):
         raise HTTPException(status_code=401, detail="Invalid authentication token")
 
 @app.get("/weather")
-def get_weather(cities: str, user_data: dict = Depends(verify_token)):
-    city_list = cities.split(",")
-    weather_data = []
-    requests.post(url= "http://localhost:5000/weather", json={"cities":city_list} )
-    for city in city_list:
-        url = f"http://api.openweathermap.org/data/2.5/weather?q={city.strip()}&appid={WEATHER_API_KEY}&units=metric"
-        response = requests.get(url)
-        if response.status_code == 200:
-            weather_data.append(response.json())
-        else:
-            weather_data.append({"city": city, "error": "Could not fetch data"})
+def get_weather(city: str, user_data: dict = Depends(verify_token)):
+    try:
+        city_list = [city]
+        #requests.post(url= "http://localhost:5000/weather", json={"cities":city_list} ) 
+        url = f"http://api.openweathermap.org/data/2.5/weather?q={city}&appid={WEATHER_API_KEY}&units=metric"
+        print(f"Request URL: {url}")  # Debugging: Print the URL
 
-    return weather_data
+        response = requests.get(url)
+        print(f"Response Status Code: {response.status_code}")  # Debugging: Print status code
+        print(f"Response Content: {response.text}")  # Debugging: Print the response content
+
+        # Check if the request was successful
+        if response.status_code == 200:
+            return response.json()
+        else: 
+            return {"error": "City not found. Please enter a valid city name."}
+
+    except requests.RequestException as e:
+        return {"error": f"An error occurred while fetching weather data: {str(e)}"}
