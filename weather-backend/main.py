@@ -36,8 +36,10 @@ def verify_token(authorization: str = Header(None)):
         raise HTTPException(status_code=401, detail="Invalid authentication token")
 
 @app.get("/weather")
-def get_weather(city: str):
+def get_weather(city: str, user_data: dict = Depends(verify_token)):
     try:
+        city_list = [city]
+        #requests.post(url= "http://localhost:5000/weather", json={"cities":city_list} ) 
         url = f"http://api.openweathermap.org/data/2.5/weather?q={city}&appid={WEATHER_API_KEY}&units=metric"
         print(f"Request URL: {url}")  # Debugging: Print the URL
 

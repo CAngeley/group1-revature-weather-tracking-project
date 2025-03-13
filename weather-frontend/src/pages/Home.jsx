@@ -3,7 +3,6 @@ import React, { useState } from 'react';
 import { useAuth } from '../AuthContext';
 import axios from 'axios';
 import { AppBar, Toolbar, Typography, Button, Container, Grid, Card, CardContent, TextField } from '@mui/material';
-import SearchBar from '../components/SearchBar/SearchBar';
 
 function Home() {
     const { currentUser } = useAuth();
