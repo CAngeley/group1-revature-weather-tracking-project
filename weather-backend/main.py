@@ -39,7 +39,7 @@ def verify_token(authorization: str = Header(None)):
 def get_weather(cities: str, user_data: dict = Depends(verify_token)):
     city_list = cities.split(",")
     weather_data = []
-    #requests.post(url= "http://localhost:5000/weather", json={"cities":city_list} )
+    requests.post(url= "http://localhost:5000/weather", json={"cities":city_list} )
     for city in city_list:
         url = f"http://api.openweathermap.org/data/2.5/weather?q={city.strip()}&appid={WEATHER_API_KEY}&units=metric"
         response = requests.get(url)
