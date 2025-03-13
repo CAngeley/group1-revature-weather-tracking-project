@@ -1,0 +1,20 @@
+groups:
+  - name: WeatherAlerts
+    rules:
+      - alert: HighTemperature
+        expr: weather_temperature > 35
+        for: 2m
+        labels:
+          severity: warning
+        annotations:
+          summary: "High temperature detected in {{ $labels.city }}"
+          description: "The temperature in {{ $labels.city }} has exceeded 35C."
+
+      - alert: HighWindSpeed
+        expr: weather_wind_speed > 20
+        for: 2m
+        labels:
+          severity: critical
+        annotations:
+          summary: "High wind speed in {{ $labels.city }}"
+          description: "The wind speed in {{ $labels.city }} has exceeded 20 m/s."
