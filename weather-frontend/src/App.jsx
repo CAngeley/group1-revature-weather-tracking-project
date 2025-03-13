@@ -1,5 +1,5 @@
 import React from 'react';
-import Signup from './Signup';
+import Signup from './SignUp';
 import Login from './Login';
 import Home from './Home';
 import PrivateRoute from './PrivateRoute';
