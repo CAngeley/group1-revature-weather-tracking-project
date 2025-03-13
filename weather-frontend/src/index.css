@@ -229,7 +229,7 @@
 /* HOME PAGE STYLE */
 
 .home-page {
-  height: 100vh; /* Make the parent take the full viewport height */
+  height: 100vh; 
   display: flex;
   justify-content: center;
   align-items: center;
