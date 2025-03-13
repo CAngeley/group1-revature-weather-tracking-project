@@ -6,6 +6,7 @@ weather-backend/.env
 weather-backend/serviceAccountKey.json
 weather-frontend/weather-app/src/firebaseConfig.jsx
 weather-frontend/src/firebaseConfig.jsx
+weather-frontend/weather-app
 
 weather-backend/*
 !weather-backend/**/*.py
