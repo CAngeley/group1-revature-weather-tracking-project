@@ -25,7 +25,11 @@ const Navbar = () => {
                 <ul>
                     {currentUser ? (
                         <>
-                            <span className="user-email">👤 {currentUser.email}</span>
+                            <a href="/home"><button className="login">Weather</button></a>
+                            <a href="http://localhost:9090"><button className="login">Prom</button></a>
+                            <a href="http://localhost:9093"><button className="login">Alert</button></a>
+                            <a href="http://localhost:5000/metrics"><button className="login">Metrics</button></a>
+                            <a href="http://localhost:3000"><button className="login">Grafana</button></a>
                             <button className="login" onClick={handleLogout}>Logout</button>
                         </>
                     ) : (
