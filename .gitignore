@@ -5,6 +5,7 @@ weather-backend/serviceAccountKey.json
 weather-backend/.env
 weather-backend/serviceAccountKey.json
 weather-frontend/weather-app/src/firebaseConfig.jsx
+weather-frontend/src/firebaseConfig.jsx
 
 # Ignore prometheus and alertmanager directories except specific files
 prometheus/*
