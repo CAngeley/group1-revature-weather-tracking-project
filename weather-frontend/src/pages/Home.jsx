@@ -1,10 +1,17 @@
-// Frontend - Home.js
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import Navbar from '../components/NavBar/NavBar';
 import { useAuth } from '../AuthContext';
 import axios from 'axios';
+import search_icon from '../assets/search_icon.png';
 import { AppBar, Toolbar, Typography, Button, Container, Grid, Card, CardContent, TextField } from '@mui/material';
 
 function Home() {
+
+        useEffect(() => {
+            document.title = "Nimbus - Weather";
+          }
+        );
+
     const { currentUser } = useAuth();
     const [city, setCity] = useState('');
     const [weatherData, setWeatherData] = useState(null);
@@ -24,10 +31,14 @@ function Home() {
         else if (temp > 15 && temp <= 30) recommendation = "😎 Enjoy the weather!";
         else if (temp > 30) recommendation = "🥵 Stay hydrated, it's hot!";
         if (wind > 10) recommendation += " 💨 Strong winds! Secure loose items.";
-        if (description.includes("rain")) recommendation += " ☔ Don't forget your umbrella!";
-        if (description.includes("snow")) recommendation += " ❄️ Drive safely, it's snowy!";
+        if (description.includes("rain")) recommendation += "\n☔ Don't forget your umbrella!";
+        if (description.includes("snow")) recommendation += "\n❄️ Drive safely, it's snowy!";
 
         return recommendation;
+    };
+
+    const splitRecommendation = (recommendation) => {
+        return recommendation.split("\n").map((line, index) => <p key={index}>{line}</p>);
     };
 
     const fetchWeather = async () => {
@@ -35,27 +46,26 @@ function Home() {
             setError('Please enter a city name.');
             return;
         }
-    
+
         setError('');
-        setWeatherData(null); 
-    
+        setWeatherData(null);
+
         try {
             const token = await currentUser.getIdToken();
             const response = await axios.get(`http://localhost:8000/weather?city=${city}`, {
                 headers: { Authorization: `Bearer ${token}` }
             });
-    
-            
+
             if (response.status === 200 && response.data && !response.data.error) {
                 setWeatherData(response.data);
             } else if (response.data && response.data.error) {
-                setError(response.data.error); 
+                setError(response.data.error);
             } else {
                 setError('Unexpected error occurred. Please try again.');
             }
         } catch (err) {
             if (err.response && err.response.data && err.response.data.error) {
-                setError(err.response.data.error); 
+                setError(err.response.data.error);
             } else {
                 setError('Error fetching weather data. Please try again later.');
             }
@@ -64,54 +74,44 @@ function Home() {
     };
 
     return (
-        <Container>
-        <Typography variant="h5" style={{ margin: '20px 0' }}>Weather Lookup</Typography>
-        <TextField
-            label="Enter city name"
-            variant="outlined"
-            fullWidth
-            value={city}
-            onChange={(e) => setCity(e.target.value)}
-            style={{ marginBottom: '20px' }}
-        />
-        <Button variant="contained" color="primary" onClick={fetchWeather} style={{ marginBottom: '20px' }}>
-            Get Weather
-        </Button>
-        {error && <Typography color="error">{error}</Typography>}
-        {weatherData && (
-            <Card style={{ marginTop: '20px', padding: '10px', backgroundColor: '#f3f3f3' }}>
-                <CardContent>
-                    <Typography variant="h6" style={{ fontWeight: "bold" }}>
-                        {weatherData.name}
-                    </Typography>
-                    <Typography>🌡️ <strong>Temperature:</strong> {weatherData.main.temp}°C</Typography>
-                    <Typography>🥶 <strong>Feels Like:</strong> {weatherData.main.feels_like}°C</Typography>
-                    <Typography>💧 <strong>Humidity:</strong> {weatherData.main.humidity}%</Typography>
-                    <Typography>☁️ <strong>Conditions:</strong> {weatherData.weather[0].description}</Typography>
-                    <Typography>🌬️ <strong>Wind Speed:</strong> {weatherData.wind.speed} m/s</Typography>
-                    <Typography>🧭 <strong>Pressure:</strong> {weatherData.main.pressure} hPa</Typography>
-                    <Typography>👁️ <strong>Visibility:</strong> {weatherData.visibility / 1000} km</Typography>
-                    <Typography>🌅 <strong>Sunrise:</strong> {new Date(weatherData.sys.sunrise * 1000).toLocaleTimeString()}</Typography>
-                    <Typography>🌇 <strong>Sunset:</strong> {new Date(weatherData.sys.sunset * 1000).toLocaleTimeString()}</Typography>
-                    {/* Floating Recommendation Panel */}
-                    <div style={{
-                        background: "#ffcc00", color: "#333", padding: "10px 15px",
-                        borderRadius: "10px", fontSize: "15px", marginTop: "15px",
-                        textAlign: "center", fontWeight: "bold"
-                    }}>
-                        {getRecommendations(weatherData)}
-                    </div>
-                </CardContent>
-            </Card>
-        )}
-    </Container>
+        <div className='home-page'>
+            <Navbar />
+            <div className="weather-container">
 
+                <div className="search-bar">
+                    <input
+                        type="text"
+                        placeholder="Enter city name"
+                        value={city}
+                        onChange={(e) => setCity(e.target.value)}
+                    />
+                    <img src={search_icon} alt="Search" width={20} onClick={fetchWeather} />
+                </div>
+
+                {error && <p className="error">{error}</p>}
+
+                {weatherData && (
+                    <div className="weather-card">
+                        
+                        <p className='city-temperature'>{Math.round(weatherData.main.temp)}°C</p>
+                        <h2 className='city-name'>{weatherData.name}</h2>
+                        <div className="recommendation">
+                        {splitRecommendation(getRecommendations(weatherData))}
+                        </div>
+                        <p className='city-info'>🥶 Feels Like: {weatherData.main.feels_like}°C</p>
+                        <p className='city-info'>💧 Humidity: {weatherData.main.humidity}%</p>
+                        <p className='city-info'>☁️ Conditions: {weatherData.weather[0].description}</p>
+                        <p className='city-info'>🌬️ Wind Speed: {weatherData.wind.speed} m/s</p>
+                        <p className='city-info'>🧭 Pressure: {weatherData.main.pressure} hPa</p>
+                        <p className='city-info'>👁️ Visibility: {weatherData.visibility / 1000} km</p>
+                        <p className='city-info'>🌅 Sunrise: {new Date(weatherData.sys.sunrise * 1000).toLocaleTimeString()}</p>
+                        <p className='city-info'>🌇 Sunset: {new Date(weatherData.sys.sunset * 1000).toLocaleTimeString()}</p>
+                        
+                    </div>
+                )}
+            </div>
+        </div>
     );
 }
 
 export default Home;
-
-
-
-
-        

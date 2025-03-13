@@ -6,14 +6,11 @@ import Home from "./pages/Home";
 import LandingPage from "./pages/LandingPage";
 import { AuthProvider } from "./AuthContext";
 import PrivateRoute from "./PrivateRoute";
-import Navbar from "./components/NavBar/NavBar";
-
 
 function App() {
   return (
     <AuthProvider>
       <Router>
-        <Navbar />
         <Routes>
           <Route path="/" element={<LandingPage />} />
           <Route path="/signup" element={<Signup />} />

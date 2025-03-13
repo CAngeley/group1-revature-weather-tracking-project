@@ -1,7 +1,7 @@
 /* LANDING PAGE STYLE */
 
 *{
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -228,3 +228,83 @@
 
 /* HOME PAGE STYLE */
 
+.home-page {
+  height: 100vh; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url(./assets/planet.jpg);
+  background-size: cover;
+}
+
+.weather-container {
+  place-self: center;
+  padding: 40px;
+  border-radius: 20px;
+  background: transparent; 
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(15px); 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 400px;
+  color: white;
+  text-align: center;
+}
+
+.search-bar{
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.search-bar input{
+  height: 50px;
+  border: none;
+  outline: none;
+  border-radius: 40px;
+  padding-left: 25px;
+  color: #626262;
+  background: #ebfffc;
+}
+
+.search-bar img{
+  width: 50px;
+  padding: 15px;
+  border-radius: 50%;
+  background-color: #ebfffc;
+  cursor: pointer;
+}
+
+.city-temperature{
+  color: #fff;
+  font-size: 60px;
+  line-height: 1;
+  text-align: center;
+  margin-top: 50px;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.city-name{
+  color: #fff;
+  font-size: 30px;
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.city-info{
+  color: #fff;
+  font-size: 16px;
+  line-height: 1.5;
+  text-align: center;
+  font-weight: 600;
+}
+
+.recommendation{
+  margin-bottom : 30px;
+  color: #fff;
+  font-size: 25px;
+  line-height: 1.5;
+  font-weight: 600;
+}

@@ -1,10 +1,17 @@
 import React, { useState } from "react";
+import { useEffect } from 'react';
 import { auth } from "../firebaseConfig";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../components/NavBar/NavBar";
 
 function Login() {
+
+    useEffect(() => {
+        document.title = "Nimbus - Login";
+        }
+    );
+
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
@@ -39,7 +46,7 @@ function Login() {
                         </div>
                         <button type="submit">Login</button>
                     </form>
-                    <p>Don't have an account? <a href="/">Sign Up</a></p>
+                    <p>Don't have an account? <a href="/signup">Sign Up</a></p>
                 </div>
             </div>
         </div>
