@@ -1,15 +1,20 @@
+// Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
+import { getAuth } from "firebase/auth";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
 
+// Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyCZDD0-9TLEJF8QQ4cUYs0YXz0OOqHcTlM",
-  authDomain: "weather-tracking-app-1d906.firebaseapp.com",
-  projectId: "weather-tracking-app-1d906",
-  storageBucket: "weather-tracking-app-1d906.firebasestorage.app",
-  messagingSenderId: "749188564402",
-  appId: "1:749188564402:web:ed080cedbcafabec43d0ab",
-  measurementId: "G-PQHDTFDT79"
+  apiKey: "AIzaSyBJNOLY_VVETP9CuBF_3pMl8cCnrPotlKo",
+  authDomain: "react-revature-6950c.firebaseapp.com",
+  projectId: "react-revature-6950c",
+  storageBucket: "react-revature-6950c.firebasestorage.app",
+  messagingSenderId: "1001303600646",
+  appId: "1:1001303600646:web:0d31523a214129d9e4dd87"
 };
 
+// Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
+export const auth = getAuth(app);
+export default app;

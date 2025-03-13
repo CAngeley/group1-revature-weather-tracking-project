@@ -1,10 +1,10 @@
-import React from 'react';
-import Signup from './SignUp';
-import Login from './Login';
-import Home from './Home';
-import PrivateRoute from './PrivateRoute';
-import { AuthProvider } from './AuthContext';
-import { Route, Router, Routes } from 'react-router-dom';
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Signup from "./Signup";
+import Login from "./Login";
+import Home from "./Home";
+import { AuthProvider } from "./AuthContext";
+import PrivateRoute from "./PrivateRoute";
 
 function App() {
   return (
@@ -17,7 +17,7 @@ function App() {
         </Routes>
       </Router>
     </AuthProvider>
-  )
+  );
 }
 
 export default App;

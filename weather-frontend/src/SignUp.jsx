@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { auth } from "./firebaseConfig";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
@@ -28,7 +28,7 @@ function Signup() {
                 <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} required />
                 <button type="submit">Sign Up</button>
             </form>
-            <p>Already have an account? <a href="/">Login</a></p>
+            <p>Already have an account? <a href="/login">Login</a></p>
         </div>
     );
 }
