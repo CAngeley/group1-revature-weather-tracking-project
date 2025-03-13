@@ -25,15 +25,16 @@ Before running the project, ensure you have the following installed:
    - Backend: Place the `serviceAccountKey.json` file in the appropriate directory and reference it correctly in your application. (`weather-backend\serviceAccountKey.json`)
 
 3. **Install Dependencies**
-   - Open command prompt in VS Code
+   - Open command prompt in VS Code. Run the following commands to download the dependencies and run the React front-end.
    ```sh
    cd weather-frontend
    npm install
    npm install react-router-dom axios firebase
    npm install @mui/material @emotion/react @emotion/styled
    npm install axios
+   npm run dev
    ```
-   - Open command prompt
+   - Open command prompt. Run the following commands to create a virual environment to run the fastapi application.
    ```sh
    cd weather-backend
    python -m venv venv
@@ -43,7 +44,7 @@ Before running the project, ensure you have the following installed:
    ```
    
 4. **Run on port 5000**
-   - Open cmd prompt in VS Code
+   - Open command prompt in VS Code. Run the following commands to run the flask back-end.
    ```sh
    cd weather-backend
    venv\Scripts\activate
