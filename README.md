@@ -24,7 +24,7 @@ Before running the project, ensure you have the following installed:
    - Frontend: Ensure that `firebaseConfig.jsx` contains the correct Firebase configuration keys. (`weather-frontend\src\firebaseConfig.jsx`)
    - Backend: Place the `serviceAccountKey.json` file in the appropriate directory and reference it correctly in your application. (`weather-backend\serviceAccountKey.json`)
 
-3. **Install Dependencies**
+3. **Install Dependencies and Run**
    - Open command prompt in VS Code. Run the following commands to download the dependencies and run the React front-end.
    ```sh
    cd weather-frontend
@@ -42,8 +42,6 @@ Before running the project, ensure you have the following installed:
    pip install fastapi uvicorn requests python-dotenv firebase-admin
    uvicorn main:app --host 0.0.0.0 --port 8000 --reload
    ```
-   
-4. **Run on port 5000**
    - Open command prompt in VS Code. Run the following commands to run the flask back-end.
    ```sh
    cd weather-backend
@@ -53,12 +51,12 @@ Before running the project, ensure you have the following installed:
    pip install prometheus_client
    python app.py
    ```
-5. **Set up Prometheus and Alertmanager**
+4. **Set up Prometheus and Alertmanager**
    - Extract the Prometheus zip to the Prometheus folder. Do not overwrite.
    - Extract the Alertmanager zip to the Alertmanager folder. Do not overwrite.
    - Run both `prometheus.exe` and `alertmanager.exe`
 
-6. **Access the Application**
+5. **Access the Application**
    - Access the main application at `http://localhost:5173`
    - Access Prometheus at `http://localhost:9090`
    - Access Alertmanager at `http://localhost:9093`
